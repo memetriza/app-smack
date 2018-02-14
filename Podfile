@@ -8,8 +8,8 @@ target 'smack' do
   use_frameworks!
 
   # Pods for smack
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
-  pod 'Socket.IO-Client-Swift'
+  pod 'Socket.IO-Client-Swift', '~> 13.1.0'
 
 end
