@@ -22,9 +22,13 @@ class ChatVC: UIViewController {
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             })
         }
-        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        MessageService.instanse.findAllChannel { (success) in
+            if success {
+                // Codes will come here.
+            }
+        }
     }
 }
