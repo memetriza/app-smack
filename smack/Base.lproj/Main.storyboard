@@ -137,7 +137,7 @@
                                 <rect key="frame" x="0.0" y="123" width="375" height="429"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fZb-fL-Mqf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fZb-fL-Mqf">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fZb-fL-Mqf" id="ndm-WN-b0y">
@@ -248,6 +248,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="HPo-a5-lKx" eventType="touchUpInside" id="1ui-zo-sw8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndY-SK-rHL">
                                 <rect key="frame" x="62.5" y="318" width="250" height="30"/>
@@ -266,7 +269,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SZ2-aC-3s0">
                                 <rect key="frame" x="62.5" y="160" width="250" height="68"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-Yq-BuX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-Yq-BuX">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="j2g-YQ-HN7"/>
@@ -302,11 +305,17 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="B8k-cl-3ou">
+                                <rect key="frame" x="169" y="230" width="37" height="37"/>
+                                <color key="color" red="0.2901960784" green="0.30196078430000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="B8k-cl-3ou" firstAttribute="centerX" secondItem="g65-Ps-Rcm" secondAttribute="centerX" id="3uy-Li-HVQ"/>
                             <constraint firstItem="U0h-ut-czO" firstAttribute="trailing" secondItem="g65-Ps-Rcm" secondAttribute="trailingMargin" id="9uO-KB-89x"/>
                             <constraint firstItem="1tG-xn-YdI" firstAttribute="centerX" secondItem="g65-Ps-Rcm" secondAttribute="centerX" id="JqJ-DJ-mcm"/>
+                            <constraint firstItem="B8k-cl-3ou" firstAttribute="centerY" secondItem="g65-Ps-Rcm" secondAttribute="centerY" constant="-85" id="KbE-K2-Cb7"/>
                             <constraint firstItem="U0h-ut-czO" firstAttribute="top" secondItem="E3A-CW-7rF" secondAttribute="bottom" constant="8" id="MbK-BV-mdl"/>
                             <constraint firstItem="ndY-SK-rHL" firstAttribute="top" secondItem="1tG-xn-YdI" secondAttribute="bottom" id="OPb-Uh-xdI"/>
                             <constraint firstItem="1tG-xn-YdI" firstAttribute="top" secondItem="SZ2-aC-3s0" secondAttribute="bottom" constant="40" id="UE2-5g-amp"/>
@@ -318,6 +327,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTxt" destination="bqN-Yq-BuX" id="qmc-aX-rQn"/>
+                        <outlet property="passTxt" destination="TVd-cT-7SC" id="Eg8-Ba-wby"/>
+                        <outlet property="spinner" destination="B8k-cl-3ou" id="Hha-4F-foq"/>
                         <segue destination="Wov-GN-erd" kind="show" identifier="toCreateAccount" id="qzK-S3-6sd"/>
                     </connections>
                 </viewController>

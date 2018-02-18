@@ -16,12 +16,11 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var profileEmail: UILabel!
     @IBOutlet weak var bgView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-//Actions
+    //Actions
     
     @IBAction func closeModalPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -41,8 +40,6 @@ class ProfileVC: UIViewController {
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(ProfileVC.closeTap(_:)))
         bgView.addGestureRecognizer(closeTouch)
     }
-    
-
     
     @objc func closeTap(_ recognizer: UIGestureRecognizer) {
         dismiss(animated: true, completion: nil)
