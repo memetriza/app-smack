@@ -53,6 +53,7 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    //Notification Functions
     @objc func userDidChange(_: Notification) {
         setupUserInfo()
     }

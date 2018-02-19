@@ -18,6 +18,8 @@ class ChatVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         manuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
@@ -25,18 +27,11 @@ class ChatVC: UIViewController {
         }
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
-        
-        MessageService.instanse.findAllChannel { (success) in
-            if success {
-                // Codes will come here.
-            }
-        }
+    
     }
-    @objc func userDidChange(_: Notification) {
+    @objc func userDataDidChange(_: Notification) {
         if AuthService.instance.isLoggedIn {
+            channelNameLbl.text = "Smack"
             onLoginGetMessages()
         } else {
             channelNameLbl.text = "Please log in"
@@ -45,15 +40,28 @@ class ChatVC: UIViewController {
     @objc func channelSelected(_ notif: Notification) {
         updateWithChannel()
     }
-    func onLoginGetMessages() {
-        MessageService.instanse.findAllChannel { (success) in
-            if success {
-                // do stuff
-            }
-        }
-    }
     func updateWithChannel() {
         let channelName = MessageService.instanse.selectedChannel?.channelTitle ?? ""
         channelNameLbl.text = "#\(channelName)"
+        getMessages()
+    }
+    
+    func onLoginGetMessages() {
+        MessageService.instanse.findAllChannel { (success) in
+            if success {
+                if MessageService.instanse.channels.count > 0 {
+                    MessageService.instanse.selectedChannel = MessageService.instanse.channels[0]
+                    self.updateWithChannel()
+                }else {
+                    self.channelNameLbl.text = "No channels yet"
+                }
+            }
+        }
+    }
+    func getMessages() {
+        guard let channelId = MessageService.instanse.selectedChannel?.id else {return}
+        MessageService.instanse.findAllMessagesForChannel(channelId: channelId) { (success) in
+            
+        }
     }
 }
