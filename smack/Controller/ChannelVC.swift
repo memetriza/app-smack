@@ -25,7 +25,11 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     override func viewDidAppear(_ animated: Bool) {
         setupUserInfo()
     }
-
+    //Actions
+    @IBAction func addChannelPressed(_ sender: Any) {
+        
+    }
+    
     @IBAction func loginBtnPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
             // Showing profile page
@@ -38,7 +42,6 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
         
     }
-    @IBAction func prepareforUnwind(segue: UIStoryboardSegue){}
     
     @objc func userDidChange(_: Notification) {
         setupUserInfo()
@@ -70,6 +73,7 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         return MessageService.instanse.channels.count
     }
     
+
     
     
     
