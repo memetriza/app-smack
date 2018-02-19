@@ -31,6 +31,9 @@ let TO_CREATE_ACCOUNT = "toCreateAccount"
 let UNWİND_TO_CHANNEL = "unwindSegueToChannel"
 let TO_AVATAR_PICKER = "toAvatarPicker"
 
+//Sockets
+let SOCKET_EVT_NEW_CHANNEL = "newChannel"
+let SOCKET_EVT_CHANNEL_CREATED = "channelCreated"
 
 // User Defaults
 let TOKEN_KEY = "token"

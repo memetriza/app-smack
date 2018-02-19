@@ -15,17 +15,18 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var userImg: RoundedImage!
     @IBOutlet weak var channelTbl: UITableView!
     @IBOutlet weak var addChannelBtn: UIButton!
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         channelTbl.delegate = self
         channelTbl.dataSource = self
-        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
+        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - self.view.frame.size.width * 0.25
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.channelTbl.reloadData()
+            }
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         setupUserInfo()
