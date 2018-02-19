@@ -22,6 +22,8 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         channelTbl.dataSource = self
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - self.view.frame.size.width * 0.25
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
+        
         SocketService.instance.getChannel { (success) in
             if success {
                 self.channelTbl.reloadData()
@@ -54,6 +56,10 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @objc func userDidChange(_: Notification) {
         setupUserInfo()
     }
+    @objc func channelsLoaded(_ notif: Notification) {
+        channelTbl.reloadData()
+    }
+    
     func setupUserInfo(){
         if AuthService.instance.isLoggedIn {
             addChannelBtn.isEnabled = true
@@ -65,6 +71,7 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage(named: "menuProfileIcon")
             userImg.backgroundColor = UIColor.clear
+            channelTbl.reloadData()
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +89,12 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instanse.channels.count
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instanse.channels[indexPath.row]
+        MessageService.instanse.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        self.revealViewController().revealToggle(animated: true)
+    }
 
     
     
