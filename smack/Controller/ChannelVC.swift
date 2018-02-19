@@ -14,6 +14,11 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var userImg: RoundedImage!
     @IBOutlet weak var channelTbl: UITableView!
+    @IBOutlet weak var addChannelBtn: UIButton!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +32,9 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     //Actions
     @IBAction func addChannelPressed(_ sender: Any) {
-        
+        let addChannel = AddChannelVC()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {
@@ -48,10 +55,12 @@ class ChannelVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     func setupUserInfo(){
         if AuthService.instance.isLoggedIn {
+            addChannelBtn.isEnabled = true
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
             userImg.image = UIImage(named: UserDataService.instance.avatarName)
             userImg.backgroundColor = UserDataService.instance.returnUIcolor(components: UserDataService.instance.avatarColor)
         }else{
+            addChannelBtn.isEnabled = false
             loginBtn.setTitle("Login", for: .normal)
             userImg.image = UIImage(named: "menuProfileIcon")
             userImg.backgroundColor = UIColor.clear

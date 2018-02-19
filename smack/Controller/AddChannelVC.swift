@@ -25,9 +25,7 @@ class AddChannelVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func createChannelPressed(_ sender: Any) {
-        let channel = ChannelVC()
-        channel.modalPresentationStyle = .custom
-        present(channel, animated: true, completion: nil)
+        
     }
     func setUpView() {
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeTap(_:)))

@@ -33,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJI-hM-3uy">
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJI-hM-3uy" customClass="RoundedView" customModule="smack" customModuleProvider="target">
                     <rect key="frame" x="20" y="163.5" width="335" height="340"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-0z-mUc">
@@ -67,7 +67,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu3-nG-rcv">
-                            <rect key="frame" x="299" y="8" width="28" height="28"/>
+                            <rect key="frame" x="297" y="10" width="28" height="28"/>
                             <state key="normal" image="closeButton"/>
                             <connections>
                                 <action selector="closeModalPressed:" destination="-1" eventType="touchUpInside" id="iq9-3E-PA6"/>
@@ -89,8 +89,8 @@
                         <constraint firstItem="mvx-ZL-Hgx" firstAttribute="centerX" secondItem="PJI-hM-3uy" secondAttribute="centerX" id="9Vl-fV-OG2"/>
                         <constraint firstAttribute="bottom" secondItem="mvx-ZL-Hgx" secondAttribute="bottom" constant="8" id="II0-qO-m1b"/>
                         <constraint firstItem="sb2-0z-mUc" firstAttribute="centerX" secondItem="PJI-hM-3uy" secondAttribute="centerX" id="RBb-jB-lha"/>
-                        <constraint firstItem="gu3-nG-rcv" firstAttribute="top" secondItem="PJI-hM-3uy" secondAttribute="top" constant="8" id="Snd-KK-bTf"/>
-                        <constraint firstAttribute="trailing" secondItem="gu3-nG-rcv" secondAttribute="trailing" constant="8" id="n6z-7M-aCK"/>
+                        <constraint firstItem="gu3-nG-rcv" firstAttribute="top" secondItem="PJI-hM-3uy" secondAttribute="top" constant="10" id="Snd-KK-bTf"/>
+                        <constraint firstAttribute="trailing" secondItem="gu3-nG-rcv" secondAttribute="trailing" constant="10" id="n6z-7M-aCK"/>
                         <constraint firstAttribute="height" constant="340" id="wHj-sF-Qa2"/>
                         <constraint firstItem="sb2-0z-mUc" firstAttribute="centerY" secondItem="PJI-hM-3uy" secondAttribute="centerY" constant="-25" id="z3y-oq-dve"/>
                     </constraints>
