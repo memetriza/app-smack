@@ -78,11 +78,26 @@
                                     <constraint firstAttribute="height" constant="77" id="ltk-la-CIt"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zAK-f8-odl">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUL-91-2PN">
+                                <rect key="frame" x="337" y="637" width="30" height="30"/>
+                                <state key="normal" image="send"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sQe-ry-eGt" secondAttribute="trailing" id="Aa1-KS-CLA"/>
                             <constraint firstItem="sQe-ry-eGt" firstAttribute="leading" secondItem="XjH-ze-aWK" secondAttribute="leading" id="HJW-hm-Gc6"/>
+                            <constraint firstAttribute="trailing" secondItem="LUL-91-2PN" secondAttribute="trailing" constant="8" id="Lhm-hM-1Ui"/>
+                            <constraint firstAttribute="trailing" secondItem="zAK-f8-odl" secondAttribute="trailing" id="XJu-Yf-aFr"/>
+                            <constraint firstItem="lXk-vN-eut" firstAttribute="top" secondItem="zAK-f8-odl" secondAttribute="bottom" id="gww-xD-xfR"/>
+                            <constraint firstItem="zAK-f8-odl" firstAttribute="leading" secondItem="XjH-ze-aWK" secondAttribute="leading" id="iJJ-9a-Ths"/>
+                            <constraint firstItem="LUL-91-2PN" firstAttribute="centerY" secondItem="zAK-f8-odl" secondAttribute="centerY" id="trt-ty-3cD"/>
                             <constraint firstItem="sQe-ry-eGt" firstAttribute="top" secondItem="XjH-ze-aWK" secondAttribute="top" id="xo9-XS-KX8"/>
                         </constraints>
                     </view>
@@ -616,6 +631,7 @@
         <image name="closeButton" width="28" height="28"/>
         <image name="menuProfileIcon" width="99" height="99"/>
         <image name="profileDefault" width="192" height="192"/>
+        <image name="send" width="30" height="30"/>
         <image name="smackBack" width="28" height="28"/>
         <image name="smackBurger" width="40" height="40"/>
         <image name="smackLogo" width="48" height="40"/>
